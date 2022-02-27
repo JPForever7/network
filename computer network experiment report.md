@@ -36,9 +36,10 @@
 	(base)  xuchangqi@xuchangqideMacBook-Pro  ~   main  traceroute 127.0.0.1
 	traceroute to 127.0.0.1 (127.0.0.1), 64 hops max, 52 byte packets
 	 1  localhost (127.0.0.1)  0.344 ms  0.124 ms  0.105 ms
-	 
-	 
-	 
+
+
+​	 
+​	 
 	(base)  xuchangqi@xuchangqideMacBook-Pro  ~   main  traceroute 192.8.0.1
 	traceroute to 192.8.0.1 (192.8.0.1), 64 hops max, 52 byte packets
 	 1  10.133.255.254 (10.133.255.254)  17.666 ms  9.038 ms  9.611 ms
@@ -62,9 +63,25 @@
 	    202.97.29.65 (202.97.29.65)  21.346 ms
 	^C
 
+## 实验三
 
+>  What is the difference between a host and an end system? List several differ- ent types of end systems. Is a Web server an end system?
 
+There is no difference. Throughout this text, the words "host" and "end system" are used interchangeably. 
 
+End systems include PCs, workstations, Web servers, mail servers, PDAs, Internet-connected game consoles, etc.
+
+## 实验四
+
+> R2. The word protocol is often used to describe diplomatic relations. How does Wikipedia describe diplomatic protocol?
+
+From Wikipedia: Diplomatic protocol is commonly described as a set of international courtesy rules. These well-established and time-honored rules have made it easier for nations and people to live and work together. Part of protocol has always been the acknowledgment of the hierarchical standing of all present. Protocol rules are based on the principles of civility.
+
+## 实验五
+
+> Why are standards important for protocols?
+
+Standards are important for protocols so that people can create networking systems and products that interoperate.
 
 
 
