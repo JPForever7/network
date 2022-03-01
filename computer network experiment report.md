@@ -38,8 +38,7 @@
 	 1  localhost (127.0.0.1)  0.344 ms  0.124 ms  0.105 ms
 
 
-​	 
-​	 
+```
 	(base)  xuchangqi@xuchangqideMacBook-Pro  ~   main  traceroute 192.8.0.1
 	traceroute to 192.8.0.1 (192.8.0.1), 64 hops max, 52 byte packets
 	 1  10.133.255.254 (10.133.255.254)  17.666 ms  9.038 ms  9.611 ms
@@ -48,7 +47,8 @@
 	 4  172.17.11.214 (172.17.11.214)  10.714 ms  10.302 ms  9.664 ms
 	 5  172.17.11.254 (172.17.11.254)  9.434 ms  8.914 ms  9.724 ms
 	 6  218.197.158.254 (218.197.158.254)  10.531 ms  9.060 ms  11.303 ms
-	 
+```
+
 	 traceroute www.baidu.com
 	traceroute: Warning: www.baidu.com has multiple addresses; using 14.215.177.39
 	traceroute to www.a.shifen.com (14.215.177.39), 64 hops max, 52 byte packets
@@ -82,6 +82,47 @@ From Wikipedia: Diplomatic protocol is commonly described as a set of internatio
 > Why are standards important for protocols?
 
 Standards are important for protocols so that people can create networking systems and products that interoperate.
+
+## 实验六
+
+> P6. Obtain the HTTP/1.1 specification (RFC 2616). Answer the following questions:
+>
+> 1.  Explain the mechanism used for signaling between the client and server to indicate that a persistent connection is being closed. Can the client, the server, or both signal the close of a connection?
+>
+> 2. What encryption services are provided by HTTP?
+>
+> 3. Can a client open three or more simultaneous connections with a given server?
+>
+> 4. Either a server or a client may close a transport connection between them if either one detects the connection has been idle for some time. Is it possible that one side starts closing a connection while the other side is transmitting data via this connection? Explain.
+
+ 	1. Unless the "close" tag is included in the request's Connect header, an HTTP/1.1 server can always assume that an HTTP/1.1 client wants to maintain a persistent connection. If the server wants to close the connection immediately after sending the response, it SHOULD send a Connect header field containing "close".
+     An HTTP/1.1 client may expect to keep the connection open, but this must be based on whether the server response contains a Connect header field and whether the header field contains "close". If the client does not want to maintain the connection for more requests, it SHOULD send a Connect header field with a value of "close".
+     If either the client or the server sends a Connect header with "close", then the client's request will become the last request for this connection.
+     Therefore, either the client or the server can signal that the connection is closed.
+ 	2. The HTTP protocol itself has no encryption service.
+ 	3. No, there is a maximum of two concurrent persistent connections.
+ 	4. One side has been closed and it is not possible for the other side to transfer data over the connection.
+     It is therefore required that the client software should be able to reopen the transport layer connection and retransmit the abandoned request sequence without user interaction.
+
+## 实验七
+
+> Problem :
+>
+>  WriteasimpleTCPprogramforaserverthatacceptslinesofinputfromacli- ent and prints the lines onto the server’s standard output. (You can do this by modifying the TCPServer.py program in the text.) Compile and execute your program. On any other machine that contains a Web browser, set the proxy server in the browser to the host that is running your server program; also con- figure the port number appropriately. Your browser should now send its GET request messages to your server, and your server should display the messages on its standard output. Use this platform to determine whether your browser generates conditional GET messages for objects that are locally cached.
+
+``` python
+from socket import *
+serverPort = 12000
+serverSocket = socket(AF_INET, SOCK_STREAM)
+serverSocket.bind(("", serverPort))
+serverSocket.listen(1)
+print("The server is ready to receive")
+while 1:
+    connectSocket, addr = serverSocket.accept()
+    sentence = connectSocket.recv(1024)
+    print(sentence.decode())
+    connectSocket.close()
+```
 
 
 
